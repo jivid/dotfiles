@@ -1,0 +1,40 @@
+function update(){
+  if [ "$1" = "351" ]
+  then
+    current_dir=`pwd`
+    cd ~/git_repos/ece351/labs
+    git pull upstream master
+    git push
+    cd "$current_dir"
+    echo "Update - Done!"
+  else
+    echo "Cannot update. Unknown destination $1"
+  fi
+}
+
+function goto(){
+    if [ "$1" = "django" ]
+    then
+        cd /Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/django
+        clear
+    elif [ "$1" = "rails" ]
+    then
+        cd /usr/local/opt/ruby/lib
+        clear
+    elif [ "$1" = "351" ]
+    then
+        cd ~/git_repos/ece351/
+        clear
+    else
+        echo "ERROR: Could not load application $1"
+    fi
+}
+
+function mkd() {
+  mkdir -p "$@" && cd "$@"
+}
+
+function ip() {
+  echo $(ifconfig | grep broadcast | awk '{print $2}')
+}
+
