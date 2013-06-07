@@ -2,9 +2,15 @@ function update(){
   if [ "$1" = "351" ]
   then
     current_dir=`pwd`
+    echo "** Updating 'labs' repository **"
     cd ~/git_repos/ece351/labs
     git pull upstream master
     git push
+    echo "Finished labs!"
+    echo "** Updating 'media' repository **"
+    cd ~/git_repos/ece351/media
+    git pull
+    echo "Finished media!"
     cd "$current_dir"
     echo "Update - Done!"
   else
