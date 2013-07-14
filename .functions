@@ -13,9 +13,37 @@ function update(){
     echo "Finished media!"
     cd "$current_dir"
     echo "Update - Done!"
+  elif [ "$1" = "327" ]
+  then
+    dest_branch=$2
+    if [ -z $dest_branch ]
+    then
+      echo "No branch specified for update. Exiting..."
+    else
+      current_dir=`pwd`
+      echo "** Updating branch: '$branch' **"
+      cd ~/git_repos/ece327/
+      current_branch=`parse_git_branch | tr '()' ' '`
+      git checkout $dest_branch
+      git pull origin $dest_branch
+      echo "Finished updating!"
+      git checkout $current_branch
+      cd $current_dir
+      echo "Update - Done!"
+    fi
   else
     echo "Cannot update. Unknown destination $1"
   fi
+}
+
+function drlogin(){
+    if [ "$1" = "dspace" ]
+    then
+      ssh divij@draftingspace.com
+    elif [ "$1" = "ece" ]
+    then
+      ssh drajkuma@ecelinux3.uwaterloo.ca
+    fi
 }
 
 function goto(){
@@ -27,9 +55,17 @@ function goto(){
     then
         cd /usr/local/opt/ruby/lib
         clear
+    elif [ "$1" = "velo" ]
+    then
+        cd ~/ruby/heroku_apps/velocityrooms
+        clear
     elif [ "$1" = "351" ]
     then
         cd ~/git_repos/ece351/
+        clear
+    elif [ "$1" = "327" ]
+    then
+        cd ~/git_repos/ece327/
         clear
     else
         echo "ERROR: Could not load application $1"
@@ -44,3 +80,12 @@ function ip() {
   echo $(ifconfig | grep broadcast | awk '{print $2}')
 }
 
+function parse_git_branch {
+  git branch &>/dev/null
+  if [ $? == '0' ]
+  then 
+    git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
+  else
+    echo "(---)"
+  fi
+}
