@@ -21,7 +21,7 @@ function update(){
       echo "No branch specified for update. Exiting..."
     else
       current_dir=`pwd`
-      echo "** Updating branch: '$branch' **"
+      echo "** Updating branch: '$dest_branch' **"
       cd ~/git_repos/ece327/
       current_branch=`parse_git_branch | tr '()' ' '`
       git checkout $dest_branch
