@@ -42,10 +42,6 @@ function mkd() {
   mkdir -p "$@" && cd "$@"
 }
 
-function ip() {
-  echo $(ifconfig | grep broadcast | awk '{print $2}')
-}
-
 function parse_git_branch {
   git branch &>/dev/null
   if [ $? == '0' ]
