@@ -28,16 +28,6 @@ function goto(){
   fi
 }
 
-function drlogin(){
-    if [ "$1" = "ec2" ]
-    then
-      ssh -i ~/Downloads/webserver_key.pem ubuntu@ec2-54-226-214-59.compute-1.amazonaws.com
-    elif [ "$1" = "ece" ]
-    then
-      ssh drajkuma@ecelinux3.uwaterloo.ca
-    fi
-}
-
 function mkd() {
   mkdir -p "$@" && cd "$@"
 }
