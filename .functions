@@ -1,74 +1,40 @@
-function update(){
-  if [ "$1" = "351" ]
+function goto(){
+  if [ "$1" == "make" ]
   then
-    current_dir=`pwd`
-    echo "** Updating 'labs' repository **"
-    cd ~/git_repos/ece351/labs
-    git pull upstream master
-    git push
-    echo "Finished labs!"
-    echo "** Updating 'media' repository **"
-    cd ~/git_repos/ece351/media
-    git pull
-    echo "Finished media!"
-    cd "$current_dir"
-    echo "Update - Done!"
-  elif [ "$1" = "327" ]
-  then
-    dest_branch=$2
-    if [ -z $dest_branch ]
+    if [ -z $2 ]
     then
-      echo "No branch specified for update. Exiting..."
-    else
-      current_dir=`pwd`
-      echo "** Updating branch: '$dest_branch' **"
-      cd ~/git_repos/ece327/
-      current_branch=`parse_git_branch | tr '()' ' '`
-      git checkout $dest_branch
-      git pull origin $dest_branch
-      echo "Finished updating!"
-      git checkout $current_branch
-      cd $current_dir
-      echo "Update - Done!"
+      echo "No source specified!"
+      return
     fi
+
+    if [ -z $3 ]
+    then
+      target=`basename $2`
+    else
+      target=$3
+    fi
+
+    ln -s ${2%/} ~/.goto/$target 
+  elif [ "$1" == "remove" ]
+  then
+    if [ -z $2 ]
+    then
+      echo "No target specified!"
+      return
+    fi
+    rm ~/.goto/$2
   else
-    echo "Cannot update. Unknown destination $1"
+    cd ~/.goto/$1
   fi
 }
 
 function drlogin(){
-    if [ "$1" = "dspace" ]
+    if [ "$1" = "ec2" ]
     then
-      ssh divij@draftingspace.com
+      ssh -i ~/Downloads/webserver_key.pem ubuntu@ec2-54-226-214-59.compute-1.amazonaws.com
     elif [ "$1" = "ece" ]
     then
       ssh drajkuma@ecelinux3.uwaterloo.ca
-    fi
-}
-
-function goto(){
-    if [ "$1" = "django" ]
-    then
-        cd /Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/django
-        clear
-    elif [ "$1" = "rails" ]
-    then
-        cd /usr/local/opt/ruby/lib
-        clear
-    elif [ "$1" = "velo" ]
-    then
-        cd ~/ruby/heroku_apps/velocityrooms
-        clear
-    elif [ "$1" = "351" ]
-    then
-        cd ~/git_repos/ece351/
-        clear
-    elif [ "$1" = "327" ]
-    then
-        cd ~/git_repos/ece327/
-        clear
-    else
-        echo "ERROR: Could not load application $1"
     fi
 }
 
@@ -84,8 +50,7 @@ function parse_git_branch {
   git branch &>/dev/null
   if [ $? == '0' ]
   then 
-    git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
-  else
-    echo "(---)"
+    branch=$(git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/')
+    echo "$branch "
   fi
 }
