@@ -24,11 +24,6 @@
     now = diff HEAD
     stache = stash
     ss = stash
-    cl = "!f() { git clone git@wdca.unfuddle.com:wdca/$1.git $2; }; f"
-    sa = "!f() { git submodule add git@wdca.unfuddle.com:wdca/$1.git $2; }; f"
-    ra = "!f() { git remote add $1 git@wdca.unfuddle.com:wdca/$2.git $3; }; f"
-    pom = push origin master
-    hom = push heroku master
 [color]
     ui = true
 [color "branch"]
@@ -49,4 +44,5 @@
 [core]
 	ignorecase = false
 	filemode = false
+	editor = /usr/bin/vim
 
