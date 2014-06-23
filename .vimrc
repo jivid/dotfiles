@@ -36,5 +36,11 @@ autocmd FileType html set tabstop=2
 autocmd FileType html set shiftwidth=2
 autocmd FileType html set textwidth=0
 
-"Make
+" Make
 autocmd FileType make set noexpandtab
+
+" Vim
+autocmd FileType vim set tabstop=2
+autocmd FileType vim set shiftwidth=2
+autocmd FileType vim set textwidth=0
+
