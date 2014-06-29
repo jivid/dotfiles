@@ -29,7 +29,8 @@ autocmd FileType java set textwidth=120
 autocmd FileType cpp set textwidth=120
 
 " JS
-autocmd FileType cpp set textwidth=120
+autocmd FileType js set textwidth=120
+autocmd FileType jsx set textwidth=120
 
 " HTML
 autocmd FileType html set tabstop=2
