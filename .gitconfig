@@ -6,25 +6,11 @@
     helper = osxkeychain
 
 [alias]
-    st = status
-    ci = commit
-    br = branch
-    co = checkout
-    df = diff
-    dc = diff --cached
     deleted = log --diff-filter=D --summary
-    lg = log -p
-    l = log --graph --decorate --pretty=oneline --abbrev-commit
     ll = log --pretty=format:'%h : %s' --graph --decorate
     lol = log --pretty=oneline --graph --decorate --abbrev-commit
     la = log --graph --decorate --pretty=oneline --abbrev-commit --all
     ls = ls-files
-    rb = rebase
-    com = checkout master
-    rem = rebase master
-    now = diff HEAD
-    stache = stash
-    ss = stash
 [color]
     ui = true
 [color "branch"]
