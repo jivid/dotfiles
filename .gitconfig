@@ -1,9 +1,9 @@
 [user]
-	name = Divij Rajkumar
-	email = drajkuma1@gmail.com
+    name = Divij Rajkumar
+    email = drajkuma1@gmail.com
 
 [credential]
-  helper = osxkeychain
+    helper = osxkeychain
 
 [alias]
     st = status
@@ -12,6 +12,7 @@
     co = checkout
     df = diff
     dc = diff --cached
+    deleted = log --diff-filter=D --summary
     lg = log -p
     l = log --graph --decorate --pretty=oneline --abbrev-commit
     ll = log --pretty=format:'%h : %s' --graph --decorate
@@ -39,10 +40,10 @@
     changed = yellow
     untracked = red
 [apply]
-  ignorewhitespace = change
-	whitespace = nowarn
+    ignorewhitespace = change
+    whitespace = nowarn
 [core]
-	ignorecase = false
-	filemode = false
-	editor = /usr/bin/vim
+    ignorecase = false
+    filemode = false
+    editor = /usr/bin/vim
 
