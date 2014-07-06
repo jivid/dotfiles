@@ -1,6 +1,6 @@
 _gotoComplete() {
     local cur=${COMP_WORDS[COMP_CWORD]}
-    COMPREPLY=( $(compgen -W "$(ls ~/.goto | sed -e 's/@//g')" -- $cur) )
+    COMPREPLY=( $(compgen -W "$(ls ~/.goto | sed -E 's/(\w*)@/\1/g')" -- $cur) )
 }
 
 complete -F _gotoComplete goto
