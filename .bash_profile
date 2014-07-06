@@ -1,5 +1,5 @@
 # Source the .aliases and .functions files
-for file in ~/.{aliases,functions}; do
+for file in ~/.{aliases,functions,bash_autocomplete}; do
   [ -r "$file" ] && source "$file"
 done
 
@@ -13,3 +13,5 @@ fi
 
 # Set up a custom prompt
 export PS1="\e[1;31m\W\e[m \e[1;32m\$(parse_git_branch)\e[m$ "
+
+export EDITOR=vim
