@@ -6,7 +6,7 @@ set shiftwidth=4
 set shiftround
 set expandtab
 set incsearch
-set textwidth=79
+set textwidth=0
 
 " Syntax highlighting for all languages
 syntax on
@@ -28,14 +28,12 @@ autocmd FileType java set textwidth=120
 " C++
 autocmd FileType cpp set textwidth=120
 
-" JS
-autocmd FileType js set textwidth=120
-autocmd FileType jsx set textwidth=120
+" Python
+autocmd FileType python set textwidth=79
 
 " HTML
 autocmd FileType html set tabstop=2
 autocmd FileType html set shiftwidth=2
-autocmd FileType html set textwidth=0
 
 " Make
 autocmd FileType make set noexpandtab
@@ -43,5 +41,4 @@ autocmd FileType make set noexpandtab
 " Vim
 autocmd FileType vim set tabstop=2
 autocmd FileType vim set shiftwidth=2
-autocmd FileType vim set textwidth=0
 
