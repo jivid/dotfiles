@@ -15,7 +15,7 @@ syntax on
 set number
 highlight LineNr ctermfg=Grey
 
-" Tab configs
+" Always show open tabs at the top
 set showtabline=2
 
 " Highlight trailing whitespace
