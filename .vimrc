@@ -13,6 +13,7 @@ syntax on
 
 " Line numbers and coloring
 set number
+set relativenumber
 highlight LineNr ctermfg=Grey
 
 " Always show open tabs at the top
