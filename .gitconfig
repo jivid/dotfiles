@@ -12,6 +12,7 @@
     lol = log --pretty=oneline --graph --decorate --abbrev-commit
     la = log --graph --decorate --pretty=oneline --abbrev-commit --all
     ls = ls-files
+    sl = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset%n' --abbrev-commit --date=relative --branches
 [color]
     ui = true
 [color "branch"]
